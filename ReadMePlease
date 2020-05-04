@@ -1,0 +1,18 @@
+#Kaitlyn Krupa
+#2019-04-23
+#So this is our sorting simulator. We are going to have multiple function files
+#for the various sorts. proj contains general information I wrote about the
+#project. the um script contains a very short example of the pause function
+#Files:
+#RunMePlease - a.k.a. the script
+#this is the file that will be run, will ask users for input right out the gate
+#will ask the sort, the order, the number of items, and the speed
+#once it runs the user will be asked if they want to Start New, Change Sort, or Exit the program
+#BubbleSort(arr, s)
+#CountingSort(arr, s)
+#HeapSort(arr, s)
+#InsertionSort(arr, s)
+#SelectionSort(arr, s)
+#The sorts above work essentially the same, they are each called once by the script
+#if the user selects that sort
+#Inside each function, every time something changes, a new bar graph is made.

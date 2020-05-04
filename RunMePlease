@@ -1,0 +1,126 @@
+clear all;
+
+display("Welcome! This is the Sorting Simulator.");
+
+run = 1;
+runarr = 0;
+while (run == 1)
+
+display("Please answer prompts.");
+
+
+#initializes variables to invalid prompt answers
+sort = 0;
+n = 0;
+speed = 0;
+order = 0;
+
+#Type of Sort
+while (sort != 1 && sort != 2 && sort != 3 && sort != 4 && sort != 5);
+	display("Pick which sort you would like to see:");
+	display("   1. Selection Sort");
+	display("   2. Insertion Sort");
+	display("   3. Bubble Sort");
+	display("   4. Counting Sort");
+	display("   5. Heap Sort");
+	sort = input("Number? ");
+endwhile
+
+if (runarr == 0)
+
+#Number of items
+while (n < 10 || n > 1000)
+	if (n != 0)
+		display("Please enter valid integer.")
+	endif 
+	n = input("How many items? (10-1000) ");
+	if (!isnumeric(n) || n != floor(n))
+		n = 1;
+	endif
+endwhile
+
+#Speed of Sort
+while (speed != 1 && speed != 2 && speed != 3)
+	if (speed != 0)
+		display("Please enter valid selection.")
+	endif
+	display("Select a speed: ")
+	display("   1. Slow ")
+	display("   2. Medium ")
+	display("   3. Fast ") 
+	speed = input("Number? ");
+endwhile
+
+if (speed == 1) #sets variable s to pause time in seconds
+	s = 1; #slow - six second intervals
+elseif (speed == 2)
+	s = 0.1; #medium - three second intervals
+else 
+	s = 0.001; #fast - one second intervals
+endif
+
+#Order of initial set
+while (order != 1 && order != 2 && order != 3 && order != 4 && order != 5)
+	if (order != 0)
+		display("Please enter valid selection.")
+	endif
+	display("Select an order: ")
+	display("   1. Ascending ")
+	display("   2. Descending ")
+	display("   3. Random Ascending ")
+	display("   4. Random Descending ")
+	display("   5. Random "); 
+	order = input("Number? ");
+endwhile
+
+#Creating the Array
+if (order == 1 || order == 3) #if Ascending or Random Ascending
+	arr = [1:2:2*n]; #sets array equal to first n odd numbers
+elseif (order == 2 || order == 4) #if Descending or Random Ascending
+	arr = [2*n:-2:1]; #sets array equal to first n odd numbers in backwards order
+endif
+if (order == 3 || order == 4) #if Random Ascending or Random Descending
+	for k=1:n
+		arr(k) += floor(10 * rand(1)); #sets arr(k) equal to a random number int from 0-10 plus arr(k)
+	endfor
+elseif (order == 5)
+	for k=1:n
+		arr(k) = floor(2*n * rand(1)); #sets arr(k) to random number int from 0-2n
+	endfor
+endif
+
+endif
+
+if (sort == 1)
+	SelectionSort(arr, s);
+elseif (sort == 2)
+	InsertionSort(arr, s);
+elseif (sort == 3)
+	BubbleSort(arr, s);
+elseif (sort == 4)
+	CountingSort(arr, s);
+elseif (sort == 5)
+	HeapSort(arr, s);
+endif
+
+
+display("Would you like to....");
+display("   1. Start New ");
+display("   2. Change Sort (keep example array)");
+display("   3. Exit ");
+next = input("Number? ");
+
+if (next == 1)
+	runarr = 0;
+	clf
+elseif (next == 2)
+	runarr = 1;
+else
+	run = 0;
+	display("Thank you, goodbye!");
+endif
+
+endwhile
+
+clf
+clear all
